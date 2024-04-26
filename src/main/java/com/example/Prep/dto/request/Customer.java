@@ -10,12 +10,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class Customer {
-	private String name;
 	
-	private String address;
+	private String customerId;
 	
-	private Long phoneNumber;
+	private String username;
 	
-	private String govtIdProof;
+	private String password;
+	
+	private boolean enabled;
 
 }

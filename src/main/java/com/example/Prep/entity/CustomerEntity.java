@@ -1,6 +1,6 @@
 package com.example.Prep.entity;
 
-import javax.validation.constraints.Pattern;
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,19 +21,19 @@ public class CustomerEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	@Column(name = "customer_id")
+	private String customerId;
 	
-	@Column(name = "Name")
-	private String name;
+	@Column(name = "username")
+	private String username;
 	
-	@Column(name= "Address")
-	private String address;
+	@Column(name= "password")
+	private String password;
+
+	@Column(name = "enabled")
+	private boolean enabled;
 	
-	@Pattern(regexp="\\d+")
-	@Column(name = "PhoneNo.")
-	private Long phoneNumber;
-	
-	@Column(name = "GovtID-Proof")
-	private String govtIdProof;
+	@Column(name = "registration_date")
+	private Date registrationDate;
 
 }
