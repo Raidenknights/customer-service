@@ -7,6 +7,6 @@ public interface CustomerService {
 	public void addCustomer(Customer customer);
 	public void deleteCustomer(String customerId);
 	public void modifyCustomer(String customerId, Customer customer);
-	public Customer readCustomer(String customerId);
+	public Customer readCustomer(String username);
 
 }
