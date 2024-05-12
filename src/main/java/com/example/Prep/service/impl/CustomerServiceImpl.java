@@ -58,6 +58,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 		customer.setCustomerId(customerEntity.getCustomerId());
 		customer.setUsername(customerEntity.getUsername());
+		customer.setEmail(customerEntity.getEmail());
+		customer.setEnabled(customerEntity.isEnabled());
 
 		return customer;
 
