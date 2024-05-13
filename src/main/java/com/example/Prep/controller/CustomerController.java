@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Prep.constants.Constants;
 import com.example.Prep.dto.request.Customer;
 import com.example.Prep.service.CustomerService;
 
@@ -16,26 +17,25 @@ import com.example.Prep.service.CustomerService;
  */
 @RestController
 public class CustomerController {
-	
+
 	private CustomerService customerService;
-	
+
 	public CustomerController(CustomerService customerService) {
 		// TODO Auto-generated constructor stub
-		this.customerService=customerService;
+		this.customerService = customerService;
 	}
-	
-	@GetMapping(path = "/fetch/{username}")
-	public ResponseEntity<Customer> fetchCustomerByUserName(@PathVariable String username){
-		
-		return new ResponseEntity<>(customerService.readCustomer(username),HttpStatus.OK);
-		
+
+	@GetMapping(path = Constants.FETCH_CUSTOMER_DETAIL_URL)
+	public ResponseEntity<Customer> fetchCustomerByUserName(@PathVariable String username) {
+
+		return new ResponseEntity<>(customerService.readCustomer(username), HttpStatus.OK);
+
 	}
-	
-	@PostMapping(path = "create/user/new")
-	public ResponseEntity<String> createUser(@RequestBody Customer customer){
-		
+
+	@PostMapping(path = Constants.CREATE_CUSTOMER_URL)
+	public ResponseEntity<String> createUser(@RequestBody Customer customer) {
+
 		customerService.addCustomer(customer);
-	
 		return new ResponseEntity<>("User has been created", HttpStatus.CREATED);
 	}
 

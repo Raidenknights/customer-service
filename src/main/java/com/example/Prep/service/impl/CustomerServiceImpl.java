@@ -44,7 +44,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer readCustomer(String username) {
 		// TODO Auto-generated method stub
-		System.out.println(username);
 		CustomerEntity customerEntity = customerRepository.findByusername(username);
 		Customer customer = mapToCustomer(customerEntity);
 
@@ -69,15 +68,16 @@ public class CustomerServiceImpl implements CustomerService {
 		CustomerEntity customerEntity = new CustomerEntity();
 
 		if (customerEntity != null) {
-			
+
 			long currentTime = System.currentTimeMillis();
 			Date dateOfRegistration = new Date(currentTime);
-			
+
 			customerEntity.setEnabled(true);
 			customerEntity.setUsername(customer.getUsername());
 			customerEntity.setPassword(passwordEncoder.encode(customer.getPassword()));
 			customerEntity.setEmail(customer.getEmail());
 			customerEntity.setRegistrationDate(dateOfRegistration);
+			customerEntity.setRole("customer");
 		}
 
 		return customerEntity;
