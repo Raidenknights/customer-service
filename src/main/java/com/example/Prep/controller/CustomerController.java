@@ -2,8 +2,8 @@ package com.example.Prep.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +26,9 @@ public class CustomerController {
 	}
 
 	@GetMapping(path = Constants.FETCH_CUSTOMER_DETAIL_URL)
-	public ResponseEntity<Customer> fetchCustomerByUserName(@PathVariable String username) {
+	public ResponseEntity<Customer> fetchCustomerByUserName(Authentication auth) {
 
-		return new ResponseEntity<>(customerService.readCustomer(username), HttpStatus.OK);
+		return new ResponseEntity<>(customerService.readCustomer(auth.getName()), HttpStatus.OK);
 
 	}
 

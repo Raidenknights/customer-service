@@ -17,6 +17,12 @@ import org.springframework.stereotype.Component;
 import com.example.Prep.entity.CustomerEntity;
 import com.example.Prep.repository.CustomerRepository;
 
+/**
+ * This is a custom authentication provider. It will authenticate all incoming
+ * requests as per filter chain.
+ * 
+ * @author Manas Vishnoi
+ */
 @Component
 public class CustomerAuthorization implements AuthenticationProvider {
 

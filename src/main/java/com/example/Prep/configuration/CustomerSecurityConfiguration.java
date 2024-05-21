@@ -14,7 +14,7 @@ public class CustomerSecurityConfiguration {
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
 		return http.csrf().disable().authorizeRequests().requestMatchers("create/user/new").permitAll()
-				.requestMatchers("/fetch/{username}").authenticated()// Apply authentication for other requests
+				.requestMatchers("/customer/fetch/{username}").authenticated()// Apply authentication for other requests
 				.and().httpBasic().and().build();
 	}
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.Prep.dto.request.Customer;
 import com.example.Prep.entity.CustomerEntity;
+import com.example.Prep.errorHandling.exceptions.EmaiAlreadyInUseException;
+import com.example.Prep.errorHandling.exceptions.UsernameAlreadyExistsException;
 import com.example.Prep.repository.CustomerRepository;
 import com.example.Prep.service.CustomerService;
 
@@ -24,9 +26,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public void addCustomer(Customer customer) {
 		System.out.println(customer);
 		// TODO Auto-generated method stub
-		CustomerEntity customerEntity = mapToEntity(customer);
-		customerRepository.save(customerEntity);
-
+		if (checkIfCustomerExist(customer.getUsername(), customer.getEmail()) == true) {
+			CustomerEntity customerEntity = mapToEntity(customer);
+			customerRepository.save(customerEntity);
+		}
 	}
 
 	@Override
@@ -81,5 +84,24 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		return customerEntity;
+	}
+
+	private boolean checkIfCustomerExist(String username, String email) {
+
+		CustomerEntity customerEntityByUserName = customerRepository.findByusername(username);
+
+		if (customerEntityByUserName != null) {
+			throw new UsernameAlreadyExistsException(
+					"UserName:" + username + " already exists. Please choose another user name");
+		}
+
+		CustomerEntity customerEntityByEmail = customerRepository.findByemail(username);
+
+		if (customerEntityByEmail != null) {
+			throw new EmaiAlreadyInUseException("Email:" + email + " already in use by another user");
+		}
+
+		return true;
+
 	}
 }

@@ -9,6 +9,7 @@ import com.example.Prep.entity.CustomerEntity;
 public interface CustomerRepository extends JpaRepository<CustomerEntity,String>{
 	
 	CustomerEntity findByusername(String username);
+	CustomerEntity findByemail(String email);
 
 	
 }
