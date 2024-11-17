@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +19,9 @@ import com.example.Prep.service.CustomerService;
 @RestController
 public class CustomerController {
 
-	private CustomerService customerService;
+	private final CustomerService customerService;
 
 	public CustomerController(CustomerService customerService) {
-		// TODO Auto-generated constructor stub
 		this.customerService = customerService;
 	}
 
@@ -30,6 +30,12 @@ public class CustomerController {
 
 		return new ResponseEntity<>(customerService.readCustomer(auth.getName()), HttpStatus.OK);
 
+	}
+
+	@GetMapping(path = "/fetch/user/exists/{email}")
+	public ResponseEntity<Boolean> checkIfCustomerExists(@PathVariable String email) {
+
+		return new ResponseEntity<>(customerService.checkIfCustomerExists(email), HttpStatus.OK);
 	}
 
 	@PostMapping(path = Constants.CREATE_CUSTOMER_URL)

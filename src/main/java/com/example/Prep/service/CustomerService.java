@@ -8,5 +8,6 @@ public interface CustomerService {
 	public void deleteCustomer(String customerId);
 	public void modifyCustomer(String customerId, Customer customer);
 	public Customer readCustomer(String username);
+	public boolean checkIfCustomerExists(String email);
 
 }

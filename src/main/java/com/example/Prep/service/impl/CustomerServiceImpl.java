@@ -53,6 +53,15 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer;
 
 	}
+	
+	@Override
+	public boolean checkIfCustomerExists(String email) {
+		// TODO Auto-generated method stub
+		CustomerEntity customerEntity = customerRepository.findByemail(email);
+		if(customerEntity!=null)
+			return true;
+		return false;
+	}
 
 	private Customer mapToCustomer(CustomerEntity customerEntity) {
 
