@@ -1,6 +1,5 @@
 package com.example.Prep;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,10 +16,5 @@ public class CustomerControllerTest {
 
 	@InjectMocks
 	CustomerController customerController;
-
-	@Test
-	public void fetchCustomerTest() {
-
-	}
 
 }
