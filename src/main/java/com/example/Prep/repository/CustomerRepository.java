@@ -5,11 +5,15 @@ import org.springframework.stereotype.Repository;
 
 import com.example.Prep.entity.CustomerEntity;
 
+/**
+ * This is the interface which extends JPA repository and allows spring-boot
+ * application to database.
+ */
 @Repository
-public interface CustomerRepository extends JpaRepository<CustomerEntity,String>{
-	
+public interface CustomerRepository extends JpaRepository<CustomerEntity, String> {
+
 	CustomerEntity findByusername(String username);
+
 	CustomerEntity findByemail(String email);
 
-	
 }

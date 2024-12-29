@@ -15,10 +15,12 @@ import com.example.Prep.constants.Constants;
 import com.example.Prep.dto.request.Customer;
 import com.example.Prep.service.CustomerService;
 
-/*
- * This class the controller class and exposes API to perform Create and fetch operations for customer.
+/**
+ * This class the controller class and exposes API to perform Create and fetch
+ * operations for customer.
+ * 
  * @author: Manas Vishnoi
- */
+ **/
 @RestController
 public class CustomerController {
 
@@ -31,6 +33,13 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
+	/**
+	 * This method fetches customer details from customer database. This API has
+	 * authenticated enabled in security configuration.
+	 * 
+	 * @param auth
+	 * @return ResponeEntity<Customer>
+	 */
 	@GetMapping(path = Constants.FETCH_CUSTOMER_DETAIL_URL)
 	public ResponseEntity<Customer> fetchCustomerByUserName(Authentication auth) {
 
@@ -39,6 +48,13 @@ public class CustomerController {
 
 	}
 
+	/**
+	 * This method checks if customer exists, we will check this using customer
+	 * email.
+	 * 
+	 * @param email (email of the customer)
+	 * @return ResponseEntity<Boolean>
+	 */
 	@GetMapping(path = Constants.CHECK_IF_CUSTOMER_EXISTS)
 	public ResponseEntity<Boolean> checkIfCustomerExists(@PathVariable String email) {
 
@@ -46,6 +62,12 @@ public class CustomerController {
 		return new ResponseEntity<>(customerService.checkIfCustomerExists(email), HttpStatus.OK);
 	}
 
+	/**
+	 * This method will create a new customer in the table.
+	 * 
+	 * @param customer (Customer body for first time user registration).
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping(path = Constants.CREATE_CUSTOMER_URL)
 	public ResponseEntity<String> createUser(@RequestBody Customer customer) {
 
