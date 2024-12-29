@@ -36,6 +36,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	/**
 	 * Add a new customer to customer database.
+	 * 
+	 * @param customer (request received during the API call).
 	 */
 	@Override
 	public void addCustomer(Customer customer) {

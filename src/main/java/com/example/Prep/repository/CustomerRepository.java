@@ -8,6 +8,8 @@ import com.example.Prep.entity.CustomerEntity;
 /**
  * This is the interface which extends JPA repository and allows spring-boot
  * application to database.
+ * 
+ * @author Manas Vishnoi
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, String> {

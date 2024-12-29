@@ -3,6 +3,8 @@ package com.example.Prep.configuration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,6 +28,8 @@ import com.example.Prep.repository.CustomerRepository;
 @Component
 public class CustomerAuthorization implements AuthenticationProvider {
 
+	private static final Logger logger = LoggerFactory.getLogger(CustomerAuthorization.class);
+
 	@Autowired
 	CustomerRepository customerRepository;
 
@@ -34,19 +38,20 @@ public class CustomerAuthorization implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		// TODO Auto-generated method stub
+
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
 		CustomerEntity customersData = customerRepository.findByusername(username);
+		logger.debug("authenticating user");
 
 		if (customersData == null) {
 			throw new BadCredentialsException("Username is not registered in the Database");
 		}
 
 		if (passwordEncoder.matches(password, customersData.getPassword())) {
-			System.out.println("User found");
+			logger.debug("User found");
 			List<GrantedAuthority> authorities = new ArrayList<>();
-			System.out.println(customersData.getRole());
+			logger.debug("customers " + customersData.getRole());
 			authorities.add(new SimpleGrantedAuthority(customersData.getRole()));
 			return new UsernamePasswordAuthenticationToken(username, password, authorities);
 		} else {
@@ -57,7 +62,7 @@ public class CustomerAuthorization implements AuthenticationProvider {
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		// TODO Auto-generated method stub
+
 		return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.accept.ContentNegotiationStrategy;
 import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 
-//@Configuration
+@Configuration
 public class CustomContentNegotiationStrategy {
 
 	@Bean
