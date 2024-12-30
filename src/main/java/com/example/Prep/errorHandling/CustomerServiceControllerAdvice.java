@@ -47,6 +47,7 @@ public class CustomerServiceControllerAdvice {
 	}
 
 	/**
+	 * Raised if entity doesn't exist.
 	 * 
 	 * @param ex
 	 * @param webRequest
@@ -59,6 +60,7 @@ public class CustomerServiceControllerAdvice {
 	}
 
 	/**
+	 * Generic exception handling for all exceptions if not defined explicitly.
 	 * 
 	 * @param ex
 	 * @param webRequest

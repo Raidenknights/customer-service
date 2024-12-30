@@ -10,17 +10,23 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration class for Spring AI. This class creates bean for ImageModel and
+ * ChatModel.
+ * 
+ * @author Manas Vishnoi
+ */
 @Configuration
 public class OpenAIConfiguration {
-	
-	   @Bean
-	   ImageModel imageModel(@Value("${spring.ai.openai.api-key}") String apiKey) {
-	      return new OpenAiImageModel(new OpenAiImageApi(apiKey));
-	   }
 
-	   @Bean
-	   ChatModel chatModel(@Value("${spring.ai.openai.api-key}") String apiKey) {
-	      return new OpenAiChatModel(new OpenAiApi(apiKey));
-	   }
+	@Bean
+	ImageModel imageModel(@Value("${spring.ai.openai.api-key}") String apiKey) {
+		return new OpenAiImageModel(new OpenAiImageApi(apiKey));
+	}
+
+	@Bean
+	ChatModel chatModel(@Value("${spring.ai.openai.api-key}") String apiKey) {
+		return new OpenAiChatModel(new OpenAiApi(apiKey));
+	}
 
 }

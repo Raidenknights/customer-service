@@ -9,6 +9,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Class created as entity class for customer.
+ * 
+ * @author Manas Vishnoi
+ */
 @Entity
 @Table(name = "customers")
 public class CustomerEntity {
@@ -112,7 +117,6 @@ public class CustomerEntity {
 
 	public CustomerEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

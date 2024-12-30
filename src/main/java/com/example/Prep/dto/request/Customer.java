@@ -1,5 +1,10 @@
 package com.example.Prep.dto.request;
 
+/**
+ * Request for creating customer API.
+ * 
+ * @author Manas Vishnoi
+ */
 public class Customer {
 
 	private String customerId;
