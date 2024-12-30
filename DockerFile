@@ -7,5 +7,7 @@ MAINTAINER Manas Vishnoi
 #coppy the .jar file to the container
 COPY target/customer-service-0.0.1-SNAPSHOT.jar customer-service-0.0.1-SNAPSHOT.jar
 
+EXPOSE 8081
+
 #execute the jar placed inside the image (or basically execute command)
 ENTRYPOINT [ "java", "-jar", "customer-service-0.0.1-SNAPSHOT.jar" ]
