@@ -75,5 +75,4 @@ public class CustomerController {
 		customerService.addCustomer(customer);
 		return new ResponseEntity<>("User has been created", HttpStatus.CREATED);
 	}
-
 }

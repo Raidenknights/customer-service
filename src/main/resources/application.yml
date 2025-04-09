@@ -4,16 +4,20 @@ spring:
   application:
     name: CustomerService
   datasource:
-    url: jdbc:postgresql://localhost:5432/CustomerDB-Dev
-    username: postgres
-    password: Harami@1
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   ai:
     openai:
       chat:
         options:
           model: gpt-4o-mini
-      api-key: ${{env.OPEN_API_KEY}}
+      api-key: something
     
 management:
   endpoints:

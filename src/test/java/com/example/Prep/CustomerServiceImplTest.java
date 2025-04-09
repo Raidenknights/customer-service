@@ -56,7 +56,7 @@ class CustomerServiceImplTest {
 
 		customerEntity = new CustomerEntity();
 
-		customerEntity.setCustomerId("someid");
+		customerEntity.setCustomerId(1234);
 		customerEntity.setEmail("someemail");
 		customerEntity.setEnabled(false);
 
@@ -64,7 +64,7 @@ class CustomerServiceImplTest {
 
 		customerServiceImpl.readCustomer("someusername");
 
-		assertEquals(customerEntity.getCustomerId(), "someid");
+		assertEquals(1234, customerEntity.getCustomerId());
 
 	}
 
@@ -73,7 +73,7 @@ class CustomerServiceImplTest {
 
 		customerEntity = new CustomerEntity();
 
-		customerEntity.setCustomerId("someid");
+		customerEntity.setCustomerId(1234);
 		customerEntity.setEmail("someemail");
 		customerEntity.setEnabled(false);
 		customerEntity.setRole("somerole");

@@ -21,7 +21,7 @@ public class CustomerEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private String customerId;
+	private Integer customerId;
 
 	@Column(name = "username")
 	private String username;
@@ -49,11 +49,11 @@ public class CustomerEntity {
 		this.email = email;
 	}
 
-	public String getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
@@ -103,7 +103,7 @@ public class CustomerEntity {
 				+ ", enabled=" + enabled + ", registrationDate=" + registrationDate + "]";
 	}
 
-	public CustomerEntity(String customerId, String username, String password, boolean enabled, Date registrationDate,
+	public CustomerEntity(Integer customerId, String username, String password, boolean enabled, Date registrationDate,
 			String email, String role) {
 		super();
 		this.customerId = customerId;

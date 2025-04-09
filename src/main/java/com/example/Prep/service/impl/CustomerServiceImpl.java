@@ -24,9 +24,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
-	private CustomerRepository customerRepository;
+	private final CustomerRepository customerRepository;
 
-	private PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
 
 	// Constructor based dependency
 	public CustomerServiceImpl(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
@@ -84,7 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		Customer customer = new Customer();
 
-		customer.setCustomerId(customerEntity.getCustomerId());
+		customer.setCustomerId(customerEntity.getCustomerId().toString());
 		customer.setUsername(customerEntity.getUsername());
 		customer.setEmail(customerEntity.getEmail());
 		customer.setEnabled(customerEntity.isEnabled());
