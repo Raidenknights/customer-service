@@ -75,4 +75,21 @@ public class CustomerController {
 		customerService.addCustomer(customer);
 		return new ResponseEntity<>("User has been created", HttpStatus.CREATED);
 	}
+
+	/**
+	 * This method will modify existing customer in the database.
+	 * 
+	 * @param customerId
+	 * @param customer
+	 * @return ResponseEntity<String>
+	 */
+	public ResponseEntity<String> updateExistingUser(String customerId, @RequestBody Customer customer) {
+
+		logger.debug("Entering update user method in Controller class");
+		customerService.modifyCustomer(customerId, customer);
+
+		return new ResponseEntity<>("Successfully modified details for customer id:" + customerId,
+				HttpStatus.NO_CONTENT);
+
+	}
 }

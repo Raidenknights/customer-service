@@ -12,10 +12,12 @@ import com.example.Prep.entity.CustomerEntity;
  * @author Manas Vishnoi
  */
 @Repository
-public interface CustomerRepository extends JpaRepository<CustomerEntity, String> {
+public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
 
 	CustomerEntity findByusername(String username);
 
 	CustomerEntity findByemail(String email);
+
+	CustomerEntity modifyCustomer(String customerId, CustomerEntity customerEntity);
 
 }

@@ -1,5 +1,5 @@
 #base image which has JRE
-FROM openjdk:17-jdk-slim
+FROM openjdk:25-jdk-slim
 
 #maintainer of the file
 MAINTAINER Manas Vishnoi

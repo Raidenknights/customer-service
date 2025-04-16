@@ -7,6 +7,11 @@ package com.example.Prep.errorHandling.exceptions;
  */
 public class EmaiAlreadyInUseException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public EmaiAlreadyInUseException() {
 		super();
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.Prep.dto.request.Customer;
 import com.example.Prep.entity.CustomerEntity;
+import com.example.Prep.errorHandling.exceptions.CustomerNotFoundException;
 import com.example.Prep.errorHandling.exceptions.EmaiAlreadyInUseException;
 import com.example.Prep.errorHandling.exceptions.UsernameAlreadyExistsException;
 import com.example.Prep.repository.CustomerRepository;
@@ -54,7 +55,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void modifyCustomer(String customerId, Customer customer) {
-
+		logger.debug("Entering modify customer method in ServiceImpl class");
+		if (checkIfCustomerExists(customerId)) {
+			customerRepository.modifyCustomer(customerId, mapToEntity(customer));
+		} else
+			throw new CustomerNotFoundException("No customer exists with customer id:" + customerId);
+		logger.debug("Successfully Modified customer details");
 	}
 
 	@Override
@@ -67,11 +73,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public boolean checkIfCustomerExists(String email) {
-		CustomerEntity customerEntity = customerRepository.findByemail(email);
-		if (customerEntity != null)
-			return true;
-		else
-			return false;
+		return customerRepository.findByemail(email) != null;
+
 	}
 
 	/**
